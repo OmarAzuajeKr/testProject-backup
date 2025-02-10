@@ -26,18 +26,23 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'tittle' => 'required',
+            'description' => 'required',
+        ]);
+
+        Project::create($validatedData);
+
+        return redirect()->route('projects.index');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show($id)
+    public function show( Project $project)
     {
-         $project = Project::find($id);
-
         return view('projects.show', [
-            'project' => Project::findOrFail($id)
+            'project' => $project
         ]);
          
 
@@ -57,5 +62,11 @@ class ProjectController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+
+    public function create()
+    {
+        return view('projects.create');
     }
 }
