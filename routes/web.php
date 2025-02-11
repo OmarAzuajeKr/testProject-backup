@@ -2,6 +2,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MessagesController;
 use App\Http\Controllers\ProjectController;
+use Illuminate\Support\Facades\Auth;
+
+
 
 Route::view('/', 'home')->name('home');
 Route::view('/about', 'about')->name('about');
@@ -22,3 +25,5 @@ Route::delete('/portafolio/{project}', [ProjectController::class, 'destroy'])->n
 Route::view('/contact', 'contact')->name('contact');
 
 Route::post('contact', [MessagesController::class, 'store'])->name('contact');
+Auth::routes(['register' => false]);
+

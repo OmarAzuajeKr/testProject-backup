@@ -148,5 +148,6 @@ return [
         'image' => 'imagen',
         'project' => 'proyecto',
         'tittle' => 'título',
+        'description' => 'descripción',
     ],
 ];

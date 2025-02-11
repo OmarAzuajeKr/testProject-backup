@@ -4,6 +4,19 @@
     "About": "Acerca de",
     "Services": "Servicios",
     "Portfolio": "Portafolio",
-    "Projects": "Proyectos"
+    "Projects": "Proyectos",
+    "Name": "Nombre",
+    "Email": "Correo",
+    "Email Address": "Dirección de correo",
+    "Message": "Mensaje",
+    "Send": "Enviar",
+    "Reset": "Restablecer",
+    "Login": "Iniciar sesion",
+    "Register": "Registrarse",
+    "Logout": "Salir",
+    "Dashboard": "Panel de control",
+    "Profile": "Perfil",
+    "Password": "Contraseña",
+    "Confirm Password": "Confirmar contraseña"
 }
 

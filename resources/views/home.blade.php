@@ -5,6 +5,8 @@
 
 @section('content')
     <h1>{{__('Home')}}</h1>
-    <p>Welcome to our website!</p>
+    @auth
+        {{auth()->user()->name}}
+    @endauth
 @endsection
 
