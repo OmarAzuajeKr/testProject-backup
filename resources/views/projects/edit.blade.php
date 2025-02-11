@@ -1,4 +1,3 @@
-
 @extends('layout')
 
 @section('title', 'Editar Proyecto')
@@ -6,7 +5,11 @@
 @section('content')
     <h1>Editar Proyecto</h1>
 
-@include('partials.validation-errors')
+    <a href="{{ route('projects.index') }}">Regresar</a>
+
+    @include('partials.session-status')
+
+    @include('partials.validation-errors')
 
 
 

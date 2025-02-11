@@ -1,22 +1,18 @@
-
 @extends('layout')
 
 @section('title', 'Crear Proyecto')
 
 @section('content')
     <h1>Crear Proyecto</h1>
+
+    <a href="{{ route('projects.index') }}">Regresar</a>
+    
+    @include('partials.session-status')
+
+    @include ('partials.validation-errors')
+
     <form method="POST" action="{{ route('projects.store') }}">
-        @csrf
-        <label>
-            Titulo del proyecto <br>
-            <input type="text" name="tittle">
-        </label> 
-        <br> 
-        <label>
-            Descripcion <br>
-            <textarea name="description"></textarea>
-        </label> 
-        <br>
+        @include('projects.form')
         <button>Crear</button>
     </form>
 @endsection
