@@ -1,13 +1,27 @@
+
 @extends('layout')
 
-@section('title', 'Portafolio|'. $project->tittle)
+@section('title', 'Portafolio | ' . $project->tittle)
 
 @section('content')
 
-<h1>{{$project->tittle}}</h1>
+<a href="{{ route('projects.index') }}">Regresar</a>
 
-<p>{{$project->description}}</p>
+<h1>{{ $project->tittle }}</h1>
 
-<p>{{$project->created_at->diffForHumans()}}</p>
+<p>{{ $project->description }}</p>
+
+<p>{{ $project->created_at->diffForHumans() }}</p>
+
+<br>
+
+<br>
+
+<a href="{{ route('projects.edit', $project) }}">Editar</a>
+
+<form method="POST" action="{{ route('projects.destroy', $project) }}">
+    @csrf @method('DELETE')
+    <button>Eliminar</button>
+
 
 @endsection

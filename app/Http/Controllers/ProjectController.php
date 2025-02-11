@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 
@@ -24,16 +25,12 @@ class ProjectController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(SaveProjectRequest $request)
     {
-        $validatedData = $request->validate([
-            'tittle' => 'required',
-            'description' => 'required',
-        ]);
+       
+        Project::create($request->validated());
 
-        Project::create($validatedData);
-
-        return redirect()->route('projects.index');
+        return redirect()->route('projects.index')->with('status', 'Proyecto creado');
     }
 
     /**
@@ -51,22 +48,42 @@ class ProjectController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+   
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+
+        return redirect()->route('projects.index')->with('status', 'Proyecto eliminado');
     }
 
 
     public function create()
     {
-        return view('projects.create');
+        return view('projects.create', [
+            'project' => new Project()
+        ]);
+    }
+
+    public function edit(Project $project)
+    {
+        return view('projects.edit', [
+            'project' => $project
+        ]);
+    }
+
+    public function update(Request $request, Project $project)
+    {
+        $validatedData = $request->validate([
+            'tittle' => 'required',
+            'description' => 'required',
+        ]);
+
+        $project->update($validatedData);
+
+        return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
     }
 }
