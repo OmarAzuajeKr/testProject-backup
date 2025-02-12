@@ -1,3 +1,5 @@
+/* filepath: /c:/Users/analista.desarrollo/Downloads/testProject/testProject/resources/sass/app.scss */
+
 // Fonts
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
@@ -6,3 +8,43 @@
 
 // Bootstrap
 @import 'bootstrap/scss/bootstrap';
+
+
+.navbar-nav .nav-item .nav-link.active {
+    color: #03045e; /* Color azul para el texto del elemento activo */
+    font-weight: bold; /* Opcional: hacer el texto en negrita */
+}
+
+.navbar {
+    background-color: #ffffff; /* Fondo blanco suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.navbar-nav .nav-item .nav-link {
+    color: #000; 
+    padding: 10px;
+}
+
+.navbar-nav .nav-item .nav-link:hover {
+    color: #03045e; 
+}
+
+.navbar-brand {
+    font-size: 1rem; 
+    padding: 0.25rem 0.5rem; 
+}
+
+.navbar-toggler {
+    border: none; 
+}
+
+.h-screen {
+    height: 100vh; 
+}
+
+.container {
+    max-width: 15%; 
+}

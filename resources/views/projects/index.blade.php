@@ -4,7 +4,10 @@
 
 @section('content')
     <h1>{{__('Projects')}}</h1>
+    @auth
     <a href="{{ route('projects.create') }}">Crear Proyecto</a>
+
+    @endauth
     <br>
     @include('partials.session-status')
     <ul>
