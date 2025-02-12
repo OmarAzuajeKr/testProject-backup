@@ -4,9 +4,11 @@
 
 
 @section('content')
-    <h1>{{__('Home')}}</h1>
+    <h1 class="display-4 text-center">{{__('Welcome')}}</h1>
+    <p class="lead text-center">Este es mi pequeño proyecto de practica</p>
     @auth
-        {{auth()->user()->name}}
+    <p class="lead text-muted text-center mb-3 fw-bold">Un placer tenerte aqui, {{auth()->user()->name}}</p>   
+ 
     @endauth
 @endsection
 

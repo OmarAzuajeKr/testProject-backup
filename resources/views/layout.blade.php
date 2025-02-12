@@ -13,7 +13,7 @@
         <header>
             @include('partials.nav')
         </header>
-        <main>
+        <main >
             @yield('content')
         </main>
         <footer class="bg-white text-center text-black-50 py-3 shadow-sm">

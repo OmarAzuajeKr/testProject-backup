@@ -1,6 +1,7 @@
 <!-- filepath: /c:/Users/analista.desarrollo/Downloads/testProject/testProject/resources/views/partials/nav.blade.php -->
+
 <nav class="navbar navbar-expand-sm navbar-light bg-white shadow-sm mb-5 rounded">
-    <a class="navbar-brand" href="{{ route('home') }}">{{ config('app.name') }}</a>
+    <a class="navbar-brand text-primary fw-bold" href="{{ route('home') }}">{{ config('app.name') }}</a>
     <button class="navbar-toggler" type="button" 
     data-bs-toggle="collapse" 
     data-bs-target="#navbarSupportedContent" 

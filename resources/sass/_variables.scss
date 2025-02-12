@@ -5,6 +5,7 @@ $body-bg: #f8fafc;
 $font-family-sans-serif: 'Nunito', sans-serif;
 $font-size-base: 0.9rem;
 $line-height-base: 1.6;
+$enable-responsive-font-sizes: true;
 
 
 // Colors
@@ -13,6 +14,7 @@ $indigo: #6574cd;
 $purple: #9561e2;
 $pink: #f66D9b;
 $red: #e3342f;
+$redlight: #f56565;
 $orange: #f6993f;
 $yellow: #ffed4a;
 $green: #38c172;
@@ -26,4 +28,7 @@ $gray-light: #f1f5f9;
 $gray-lighter: #e2e8f0;
 $black: #000000;
 $primary: $red;
-$secondary: $gray;
+$secondary: $redlight;
+
+$success: $green;
+

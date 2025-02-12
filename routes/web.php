@@ -25,7 +25,8 @@ Route::delete('/portafolio/{project}', [ProjectController::class, 'destroy'])->n
  */
 
 
-Route::view('/contact', 'contact')->name('contact');
+Route::view('/contact', 'contact')->name('contact')
+->middleware('auth');
 
 Route::post('contact', [MessagesController::class, 'store'])->name('contact');
 Auth::routes(['register' => false]);
