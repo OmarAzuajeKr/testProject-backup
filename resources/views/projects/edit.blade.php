@@ -11,7 +11,7 @@
                 <a href="{{ route('projects.index') }}" class="btn btn-secondary text-white mb-3">Regresar</a>
                 @include('partials.session-status')
                 @include('partials.validation-errors')
-                <form method="POST" action="{{ route('projects.update', $project) }}" class="bg-white shadow rounded py-3 px-4">
+                <form method="POST" enctype="multipart/form-data" action="{{ route('projects.update', $project) }}" class="bg-white shadow rounded py-3 px-4">
                     @csrf
                     @method('PATCH')
                     @include('projects.form')

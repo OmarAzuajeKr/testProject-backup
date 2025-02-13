@@ -7,7 +7,7 @@
     <div class="containerContact">
         <div class="row">
             <div class="col-12">
-                <a href="{{ route('projects.index') }}" class="btn btn-secondary mb-3">Regresar</a>
+                <a href="{{ route('projects.index') }}" class="btn btn-secondary text-white mb-3">Regresar</a>
                 @include('partials.session-status')
                 <div class="bg-white shadow rounded py-3 px-4">
                     @if ($project->image)
@@ -17,10 +17,10 @@
                     <p class="lead text-muted">{{ $project->description }}</p>
                     <p class="text-muted">{{ $project->created_at->diffForHumans() }}</p>
                     <div class="containerButton">
-                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-secondary mb-3">Editar</a>
+                    <a href="{{ route('projects.edit', $project) }}" class="btn btn-secondary text-white mb-3">Editar</a>
                     <form method="POST" action="{{ route('projects.destroy', $project) }}" class="d-inline">
                         @csrf @method('DELETE')
-                        <button class="btn btn-danger">Eliminar</button>
+                        <button class="btn text-black btn-danger">Eliminar</button>
                     </div>
                     </form>
                     

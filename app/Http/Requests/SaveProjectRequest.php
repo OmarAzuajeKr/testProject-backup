@@ -24,6 +24,8 @@ class SaveProjectRequest extends FormRequest
         return [
             'tittle' => 'required',
             'description' => 'required',
+            'image' => 'nullable|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
+
         ];
     }
 
@@ -32,6 +34,9 @@ class SaveProjectRequest extends FormRequest
         return [
             'tittle.required' => 'El título es obligatorio',
             'description.required' => 'La descripción es obligatoria',
+            'image.image' => 'El archivo debe ser una imagen',
+            'image.mimes' => 'El archivo debe ser una imagen de tipo: png, jpg, jpeg, gif, svg',
+            'image.max' => 'El archivo debe ser menor a 2MB',
         ];
     }
 }

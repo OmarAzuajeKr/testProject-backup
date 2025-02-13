@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
-
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -16,28 +16,23 @@ class ProjectController extends Controller
     
     public function index()
     {
-        
         return view('projects.index', [
             'projects' => Project::latest()->paginate()
         ]);
-    
-
     }
-
-    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(SaveProjectRequest $request)
     {
+        $project = new Project($request->validated());
 
-      $project = new Project ($request->validated());
-
-      $project -> image = $request->file('image')->store('images', 'public');
+        if ($request->hasFile('image')) {
+            $project->image = $request->file('image')->store('images', 'public');
+        }
 
         $project->save();
-
 
         return redirect()->route('projects.index')->with('status', 'Proyecto creado');
     }
@@ -45,30 +40,47 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show( Project $project)
+    public function show(Project $project)
     {
         return view('projects.show', [
             'project' => $project
         ]);
-         
-
     }
 
     /**
      * Update the specified resource in storage.
      */
-   
 
+     public function update(SaveProjectRequest $request, Project $project)
+     {
+         $project->fill($request->validated());
+     
+         if ($request->hasFile('image')) {
+
+            if ($project->image) {
+                 Storage::disk('public')->delete($project->image);
+             }
+             // Guardar la nueva imagen
+             $project->image = $request->file('image')->store('images', 'public');
+         }
+     
+         $project->save();
+     
+         return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
+     }
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Project $project)
     {
+        if ($project->image) {
+            Storage::disk('public')->delete($project->image);
+        }
+    
         $project->delete();
-
+    
         return redirect()->route('projects.index')->with('status', 'Proyecto eliminado');
     }
-
 
     public function create()
     {
@@ -82,17 +94,5 @@ class ProjectController extends Controller
         return view('projects.edit', [
             'project' => $project
         ]);
-    }
-
-    public function update(Request $request, Project $project)
-    {
-        $validatedData = $request->validate([
-            'tittle' => 'required',
-            'description' => 'required',
-        ]);
-
-        $project->update($validatedData);
-
-        return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
     }
 }

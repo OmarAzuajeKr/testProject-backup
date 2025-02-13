@@ -1,3 +1,4 @@
+<!-- filepath: /c:/Users/analista.desarrollo/Downloads/testProject/testProject/resources/views/projects/create.blade.php -->
 @extends('layout')
 
 @section('title', 'Crear Proyecto')
@@ -13,7 +14,7 @@
                 <form 
                 method="POST" 
                 enctype="multipart/form-data"
-                action="{{ route('projects.store') }}" class="bg-white shadow  rounded py-3 px-4">
+                action="{{ route('projects.store') }}" class="bg-white shadow rounded py-3 px-4">
                     @csrf
                     @include('projects.form')
                     <button class="btn btn-primary text-white w-100">Crear</button>
