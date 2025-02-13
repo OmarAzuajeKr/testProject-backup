@@ -4,10 +4,11 @@
 @section('title', 'Contacto')
 
 @section('content')
+<img src="{{ asset('assets/Programa2.svg') }}" class="Programa2" alt="Contacto">
     <div class="containerContact">
+        
         <div class="row">
             <div class="col-12">
-            
                 <h1 class="titleContact">{{ __('Contact') }}</h1>
                 @include('partials.session-status')
                 <p class="lead text-muted text-center">Formulario de contacto</p>

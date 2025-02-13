@@ -8,4 +8,8 @@
     Descripcion <br>
     <textarea name="description">{{ old('description', $project->description) }}</textarea>
 </label>
+<div class="custom-file">
+    <input type="file" class="custom-file-input" id="customFile" name="image">
+    <label class="custom-file-label" for="customFile">Seleccionar Archivo</label>
+</div>
 <br>

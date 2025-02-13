@@ -10,29 +10,34 @@
         @auth
             <a href="{{ route('projects.create') }}" class="btn btn-primary text-white mb-3">Crear Proyecto</a>
         @endauth
+        
         <br>
         @include('partials.session-status')
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <ul class="list-group">
+            <div class="col-md-12">
+                <div class="row">
                     @forelse ($projects as $project)
-                        <li class="list-group-item d-flex justify-content-between border-0 mb-2 shadow-sm">
-                            <a class="text-decoration-none d-flex justify-content-between w-100" href="{{ route('projects.show', $project->id) }}">
-                                <span class="font-weight-bold text-primary">
-                                    {{ $project->tittle }}
-                                </span>
-                                <span class="text-secondary text-right font-weight-light">
-                                    {{ $project->created_at->format('d/m/Y') }}
-                                </span>
-                            </a>
-                        </li>
+                        <div class="col-md-4 mb-4">
+                            <div class="card border-0 mt-4 mx-auto shadow-sm" style="width: 23rem">
+                                @if ($project->image)
+                                    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->tittle }}" class="card-img-top img-thumbnail mx-auto border-0" style="width: 100px">
+                                @endif
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">{{ $project->tittle }}</h5>
+                                    <p class="card-text text-secondary">{{ $project->created_at->format('d/m/Y') }}</p>
+                                    <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary text-white  w-100">Ver Proyecto</a>
+                                </div>
+                            </div>
+                        </div>
                     @empty
-                        <li class="list-group-item d-flex justify-content-between border-0 mb-2 shadow-sm">
-                            No hay proyectos para mostrar
-                        </li>
+                        <div class="col-12">
+                            <div class="alert alert-info" role="alert">
+                                No hay proyectos para mostrar
+                            </div>
+                        </div>
                     @endforelse
-                    {{ $projects->links() }}
-                </ul>
+                </div>
+                {{ $projects->links() }}
             </div>
         </div>
     </div>
