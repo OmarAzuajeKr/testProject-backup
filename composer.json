@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "illuminate/http": "*",
+        "intervention/image": "^3.11",
         "laravel-lang/common": "*",
         "laravel/framework": "^11.31",
         "laravel/tinker": "^2.9",

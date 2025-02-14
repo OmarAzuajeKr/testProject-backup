@@ -6,6 +6,7 @@ use App\Http\Requests\SaveProjectRequest;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Category;
 
 class ProjectController extends Controller
 {
@@ -17,7 +18,7 @@ class ProjectController extends Controller
     public function index()
     {
         return view('projects.index', [
-            'projects' => Project::latest()->paginate()
+            'projects' => Project::with ('category')->latest()->paginate()
         ]);
     }
 
@@ -51,23 +52,22 @@ class ProjectController extends Controller
      * Update the specified resource in storage.
      */
 
-     public function update(SaveProjectRequest $request, Project $project)
-     {
-         $project->fill($request->validated());
-     
-         if ($request->hasFile('image')) {
-
+    public function update(SaveProjectRequest $request, Project $project)
+    {
+    
+        $project->fill($request->validated());
+    
+        if ($request->hasFile('image')) {
             if ($project->image) {
-                 Storage::disk('public')->delete($project->image);
-             }
-             // Guardar la nueva imagen
-             $project->image = $request->file('image')->store('images', 'public');
-         }
-     
-         $project->save();
-     
-         return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
-     }
+                Storage::disk('public')->delete($project->image);
+            }
+            $project->image = $request->file('image')->store('images', 'public');
+        }
+    
+        $project->save();
+    
+        return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
+    }
     /**
      * Remove the specified resource from storage.
      */
@@ -85,14 +85,16 @@ class ProjectController extends Controller
     public function create()
     {
         return view('projects.create', [
-            'project' => new Project()
+            'project' => new Project(),
+            'categories' => Category::pluck('name', 'id')
         ]);
     }
 
     public function edit(Project $project)
     {
         return view('projects.edit', [
-            'project' => $project
+            'project' => $project,
+            'categories' => Category::pluck('name', 'id')
         ]);
     }
 }

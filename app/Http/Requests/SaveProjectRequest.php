@@ -25,18 +25,19 @@ class SaveProjectRequest extends FormRequest
             'tittle' => 'required',
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
-
+            'category_id' => 'required' // Asegúrate de que esta regla esté presente
         ];
     }
 
     public function messages()
     {
         return [
-            'tittle.required' => 'El título es obligatorio',
-            'description.required' => 'La descripción es obligatoria',
+            'tittle.required' => 'El título es obligatorio',
+            'description.required' => 'La descripción es obligatoria',
             'image.image' => 'El archivo debe ser una imagen',
-            'image.mimes' => 'El archivo debe ser una imagen de tipo: png, jpg, jpeg, gif, svg',
-            'image.max' => 'El archivo debe ser menor a 2MB',
+            'image.mimes' => 'La imagen debe ser de tipo: png, jpg, jpeg, gif, svg',
+            'image.max' => 'La imagen no debe ser mayor a 2048 kilobytes',
+            'category_id.required' => 'La categoría es obligatoria'
         ];
     }
 }

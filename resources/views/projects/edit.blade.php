@@ -14,7 +14,7 @@
                 <form method="POST" enctype="multipart/form-data" action="{{ route('projects.update', $project) }}" class="bg-white shadow rounded py-3 px-4">
                     @csrf
                     @method('PATCH')
-                    @include('projects.form')
+                    @include('projects.form', ['categories' => $categories])
                     <button class="btn btn-primary text-white w-100 mt-3">Actualizar</button>
                 </form>
             </div>

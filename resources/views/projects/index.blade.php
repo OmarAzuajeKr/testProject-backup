@@ -10,7 +10,7 @@
         @auth
             <a href="{{ route('projects.create') }}" class="btn btn-primary text-white mb-3">Crear Proyecto</a>
         @endauth
-        
+
         <br>
         @include('partials.session-status')
         <div class="row justify-content-center">
@@ -20,21 +20,28 @@
                         <div class="col-md-4 mb-4">
                             <div class="card border-0 mt-4 mx-auto shadow-sm" style="width: 23rem">
                                 @if ($project->image)
-                                    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->tittle }}" class="card-img-top img-thumbnail mx-auto border-0" style="width: 100px">
+                                    <img src="{{ asset('storage/' . $project->image) }}" alt="{{ $project->tittle }}"
+                                        class="card-img-top img-thumbnail mx-auto border-0" style="width: 100px">
                                 @endif
                                 <div class="card-body">
                                     <h5 class="card-title text-primary">{{ $project->tittle }}</h5>
                                     <p class="card-text text-secondary">{{ $project->created_at->format('d/m/Y') }}</p>
-                                    <a href="{{ route('projects.show', $project->id) }}" class="btn btn-primary text-white  w-100">Ver Proyecto</a>
+                                
+                                        @if ($project->category)
+                                            <a href="#"
+                                                class="badge bg-primary text-white">{{ $project->category->name }}</a>
+                                        @endif
+                                        <a href="{{ route('projects.show', $project->id) }}"
+                                            class="btn btn-primary text-white w-100 mt-3">Ver Proyecto</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    @empty
-                        <div class="col-12">
-                            <div class="alert alert-info" role="alert">
-                                No hay proyectos para mostrar
+                        @empty
+                            <div class="col-12">
+                                <div class="alert alert-info" role="alert">
+                                    No hay proyectos para mostrar
+                                </div>
                             </div>
-                        </div>
                     @endforelse
                 </div>
                 {{ $projects->links() }}
