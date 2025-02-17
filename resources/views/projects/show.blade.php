@@ -14,6 +14,10 @@
                         <img src="{{ asset('storage/' . $project->image) }}" class="img-fluid" alt="{{ $project->tittle }}">
                     @endif
                     <h1 class="titleContact">{{ $project->tittle }}</h1>
+                    @if ($project->category)
+                    <a href="{{ route('categories.show', $project->category) }}"
+                        class="badge bg-primary text-white">{{ $project->category->name }}</a>
+                @endif
                     <p class="lead text-muted">{{ $project->description }}</p>
                     <p class="text-muted">{{ $project->created_at->diffForHumans() }}</p>
                     <div class="containerButton">

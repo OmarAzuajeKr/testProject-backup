@@ -10,8 +10,9 @@
     class="form-select">
         <option value="">Seleccione una categoría</option>
         @foreach ($categories as $id => $name)
-            <option value="{{ $id }}" {{ $id == old('category_id', $project->category_id) ? 'selected' : '' }}>
-                {{ $name }}
+            <option value="{{ $id }}"
+            @if($id == old ('category_id', $project->category_id)) selected @endif
+                >{{ $name }}
             </option>
         @endforeach
     </select>

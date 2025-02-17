@@ -67,7 +67,7 @@ class ProjectController extends Controller
         $project->save();
     
         return redirect()->route('projects.show', $project)->with('status', 'Proyecto actualizado');
-    }
+    } 
     /**
      * Remove the specified resource from storage.
      */

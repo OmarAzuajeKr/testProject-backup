@@ -5,7 +5,14 @@
 
 @section('content')
     <div class="container">
-        <h1 class="display-4">{{ __('Projects') }}</h1>
+        @isset($category)
+        <div>
+           <h1 class="display-4">{{ $category->name }}</h1>
+           <a href="{{ route('projects.index') }}" class="btn btn-primary text-white mb-3">Regresar al protafolio</a>
+        </div>
+        @else
+            <h1 class="display-4">{{ __('Projects') }}</h1> 
+            @endisset
         <p class="lead text-dark">Proyectos realizados</p>
         @auth
             <a href="{{ route('projects.create') }}" class="btn btn-primary text-white mb-3">Crear Proyecto</a>
@@ -28,7 +35,7 @@
                                     <p class="card-text text-secondary">{{ $project->created_at->format('d/m/Y') }}</p>
                                 
                                         @if ($project->category)
-                                            <a href="#"
+                                            <a href="{{ route('categories.show', $project->category) }}"
                                                 class="badge bg-primary text-white">{{ $project->category->name }}</a>
                                         @endif
                                         <a href="{{ route('projects.show', $project->id) }}"
