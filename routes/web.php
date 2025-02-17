@@ -30,4 +30,4 @@ Route::view('/contact', 'contact')->name('contact')
     ->middleware('auth');
 
 Route::post('contact', [MessagesController::class, 'store'])->name('contact');
-Auth::routes(['register' => false]);
+Auth::routes();

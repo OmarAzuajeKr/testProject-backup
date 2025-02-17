@@ -16,6 +16,7 @@
             <li class="nav-item {{ setActive('contact') }}"><a class="nav-link {{ setActive('contact') }}" href="{{ route('contact') }}">{{__('Contact')}}</a></li>
             <li class="nav-item {{ setActive('projects.*') }}"><a class="nav-link {{ setActive('projects.*') }}" href="{{ route('projects.index') }}">{{__('Projects')}}</a></li>
             @guest
+                <li class="nav-item"><a class="nav-link {{ setActive('register') }}" href="{{ route('register') }}">{{__('Register')}}</a></li>
                 <li class="nav-item"><a class="nav-link {{ setActive('login') }}" href="{{ route('login') }}">{{__('Login')}}</a></li>
             @else
                 <li class="nav-item">

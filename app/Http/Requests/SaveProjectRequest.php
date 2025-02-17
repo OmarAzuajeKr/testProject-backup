@@ -3,6 +3,8 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Gate;
+use App\Models\Project;
 
 class SaveProjectRequest extends FormRequest
 {
@@ -25,7 +27,7 @@ class SaveProjectRequest extends FormRequest
             'tittle' => 'required',
             'description' => 'required',
             'image' => 'nullable|image|mimes:png,jpg,jpeg,gif,svg|max:2048',
-            'category_id' => 'required' // Asegúrate de que esta regla esté presente
+            'category_id' => 'required'
         ];
     }
 

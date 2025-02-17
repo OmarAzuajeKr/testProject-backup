@@ -14,9 +14,9 @@
             <h1 class="display-4">{{ __('Projects') }}</h1> 
             @endisset
         <p class="lead text-dark">Proyectos realizados</p>
-        @auth
+        @can ('create', $newProject)
             <a href="{{ route('projects.create') }}" class="btn btn-primary text-white mb-3">Crear Proyecto</a>
-        @endauth
+        @endcan
 
         <br>
         @include('partials.session-status')
