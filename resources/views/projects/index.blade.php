@@ -52,37 +52,9 @@
                 </div>
                 {{ $projects->links() }}
             </div>
-
-
-            @can('view-deleted-projects', $newProject)
-                <ul class="list-group mt-4">
-                    @foreach ($deletedProjects as $deletedProject)
-                    <p class="lead text-danger text-center fw-bold">Proyectos eliminados</p>
-                    <div class="col-md-12 mt-4 mb-4 text-center fw-bold">
-                        <li class="list-group-item text-danger border-0 bg-light shadow-sm mt-2">
-                            {{ $deletedProject->tittle }}
-                            @can('restore', $deletedProject)
-                                <form id="restore-project-{{ $deletedProject->id }}"
-                                    action="{{ route('projects.restore', $deletedProject) }}" class="d-inline" method="POST">
-                                    @csrf
-                                    @method('PATCH')
-                                    <button type="submit" class="btn btn-secondary text-white">Restaurar</button>
-                                </form>
-                            @endcan
-                            @can('forceDelete', $deletedProject)
-                                <form id="force-delete-project-{{ $deletedProject->id }}"
-                                    action="{{ route('projects.forceDelete', $deletedProject) }}" class="d-inline" method="POST"
-                                    onsubmit="return confirm('¿Estás seguro de querer eliminar este proyecto? Esta accion no se puede deshacer')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-primary text-white">Eliminar permanentemente</button>
-                                </form>
-                            @endcan
-                        </li>
-                    </div>
-                    @endforeach
-                </ul>
-            @endcan
+            @auth
+            <a href="{{ route('projects.deleteList') }}" class="btn btn-danger text-white mt-3">Ver proyectos eliminados</a>
+            @endauth
         </div>
     </div>
 @endsection

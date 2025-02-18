@@ -42,7 +42,7 @@
                         @enderror
                     </div>
                     <div class="form-group mb-3">
-                        <label for="content">Mensaje</label>
+                        <label for="content" class="form-label">Mensaje</label>
                         <textarea class="form-control bg-light shadow-sm border-0 @error('content') is-invalid @enderror" id="content" name="content" placeholder="Mensaje...">{{ old('content') }}</textarea>
                         @error('content')
                             <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                             </span>
                         @enderror
                     </div>
-                    <button class="btn btn-primary bt-lg btn- w-100">Enviar</button>
+                    <button class="btn btn-primary bt-lg btn- w-100 text-white">Enviar</button>
                 </form>
             </div>
         </div>

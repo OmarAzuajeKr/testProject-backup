@@ -17,11 +17,23 @@ class ProjectController extends Controller
         $this->middleware('auth')->except('index', 'show');
     }
 
-    public function index()
+
+    public function index(Request $request)
     {
+        $query = Project::with('category')->latest();
+    
+        if ($request->has('category')) {
+            $category = Category::where('name', $request->category)->firstOrFail();
+            $projects = $query->where('category_id', $category->id)->paginate();
+        } else {
+            $projects = $query->paginate();
+            $category = null;
+        }
+    
         return view('projects.index', [
             'newProject' => new Project(),
-            'projects' => Project::with('category')->latest()->paginate(),
+            'projects' => $projects,
+            'category' => $category,
             'deletedProjects' => Project::onlyTrashed()->get()
         ]);
     }
@@ -87,7 +99,7 @@ class ProjectController extends Controller
 
         return redirect()->route('projects.index')->with('status', 'Proyecto eliminado');
     }
-    
+
     public function restore($id)
     {
         $project = Project::withTrashed()->findOrFail($id);
@@ -132,4 +144,22 @@ class ProjectController extends Controller
             'categories' => Category::pluck('name', 'id')
         ]);
     }
+
+    public function deletedList()
+    {
+        $deletedProjects = Project::onlyTrashed()->get();
+        $newProject = new Project(); // Define la variable $newProject
+
+        return view('projects.deleteList', compact('deletedProjects', 'newProject'));
+    }
+
+    public function showPreview($id)
+{
+    $project = Project::withTrashed()->findOrFail($id);
+
+    return view('projects.showPreview', [
+        'project' => $project
+    ]);
+}
+    
 }
