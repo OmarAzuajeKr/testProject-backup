@@ -18,6 +18,10 @@
     "Profile": "Perfil",
     "Password": "Contraseña",
     "Confirm Password": "Confirmar contraseña",
-    "Welcome": "Bienvenid@"
+    "Welcome": "Bienvenid@",
+    "Forgot Your Password?": "¿Olvidaste tu contraseña?",
+    "Remember Me": "Recuérdame",
+    "Reset Password": "Restablecer contraseña",
+    "Send Password Reset Link": "Enviar enlace de restablecimiento de contraseña"
 }
 

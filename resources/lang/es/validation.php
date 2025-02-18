@@ -149,5 +149,8 @@ return [
         'project' => 'proyecto',
         'tittle' => 'título',
         'description' => 'descripción',
+        'category_id' => 'categoría',
+        'Remember Me' => 'Recuérdame',
+        'Forgot Your Password?' => '¿Olvidaste tu contraseña?',
     ],
 ];

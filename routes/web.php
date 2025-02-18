@@ -24,6 +24,14 @@ Route::get('/portafolio/{project}', [ProjectController::class, 'show'])->name('p
 Route::delete('/portafolio/{project}', [ProjectController::class, 'destroy'])->name('projects.destroy');
 */
 
+
+// Ruta para restaurar proyectos
+Route::patch('projects/{project}/restore', [ProjectController::class, 'restore'])->name('projects.restore');
+
+// Ruta para eliminar permanentemente proyectos
+Route::delete('projects/{project}/forceDelete', [ProjectController::class, 'forceDelete'])->name('projects.forceDelete');
+
+
 Route::get('categorias/{category}', [CategoryController::class, 'show'])->name('categories.show');
 
 Route::view('/contact', 'contact')->name('contact')
